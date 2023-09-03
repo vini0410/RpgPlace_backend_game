@@ -5,21 +5,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Builder
 public class CharacterModel {
 
     private Long id;
 
-    private String nome;
+    private String name;
 
-    private String vida;
+    private String life;
 
-    private String imagem;
+    private String image;
 
-    private String ficha;
+    private String doc;
 
-//    private UserModel criador;
+    private Long creator;
 }

@@ -38,14 +38,14 @@ public class CharacterUseCase {
     }
 
     public CharacterModel updateCharacter(Long id, CharacterModel model) {
-        if(Objects.isNull(id)) {
+        if (Objects.isNull(id)) {
             throw new CoreException("Erro");
         }
 
         validarCampos(model);
 
         var character = findCharacter(id);
-        var response = Objects.equals(character.getId(), model.getId())? characterPort.save(model) : null;
+        var response = Objects.equals(character.getId(), model.getId()) ? characterPort.save(model) : null;
 
         if (Objects.isNull(response)) {
             throw new CoreException("Erro");

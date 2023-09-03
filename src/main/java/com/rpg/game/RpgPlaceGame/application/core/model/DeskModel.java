@@ -7,19 +7,19 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Builder
 public class DeskModel {
 
     private Long id;
 
-    private String nome;
+    private String name;
 
-//    private UserModel mestre;
+    private Long master;
 
-    private List<CharacterModel> personagens;
+    private List<CharacterModel> characters;
 
-    private String codigo;
+    private String code;
 }

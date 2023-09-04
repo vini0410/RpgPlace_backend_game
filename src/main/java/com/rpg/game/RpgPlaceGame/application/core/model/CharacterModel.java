@@ -1,5 +1,6 @@
 package com.rpg.game.RpgPlaceGame.application.core.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +21,9 @@ public class CharacterModel {
     private String image;
 
     private String doc;
+
+    @JsonBackReference
+    private DeskModel desk;
 
     private Long creator;
 }

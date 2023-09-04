@@ -1,5 +1,6 @@
 package com.rpg.game.RpgPlaceGame.adapters.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.AllArgsConstructor;
@@ -17,8 +18,13 @@ import java.util.List;
 public class DeskDto {
 
     private Long id;
+
     private String name;
+
     private Long master;
+
+    @JsonManagedReference
     private List<CharacterDto> characters;
+
     private String code;
 }

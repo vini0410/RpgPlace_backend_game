@@ -1,5 +1,6 @@
 package com.rpg.game.RpgPlaceGame.application.core.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,6 +20,7 @@ public class DeskModel {
 
     private Long master;
 
+    @JsonManagedReference
     private List<CharacterModel> characters;
 
     private String code;

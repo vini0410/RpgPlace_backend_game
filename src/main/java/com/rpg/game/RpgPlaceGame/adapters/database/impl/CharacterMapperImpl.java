@@ -1,14 +1,19 @@
-package com.rpg.game.RpgPlaceGame.adapters.database.adap;
+package com.rpg.game.RpgPlaceGame.adapters.database.impl;
 
 import com.rpg.game.RpgPlaceGame.adapters.database.entity.CharacterEntity;
 import com.rpg.game.RpgPlaceGame.adapters.database.mapper.CharacterMapper;
+import com.rpg.game.RpgPlaceGame.adapters.database.mapper.DeskMapper;
 import com.rpg.game.RpgPlaceGame.application.core.model.CharacterModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class CharacterAdapter implements CharacterMapper {
+public class CharacterMapperImpl implements CharacterMapper {
+
+    @Autowired
+    private DeskMapper deskMapper;
 
     @Override
     public CharacterModel toModel(CharacterEntity entity) {
@@ -19,6 +24,7 @@ public class CharacterAdapter implements CharacterMapper {
                 .image(entity.getImage())
                 .doc(entity.getDoc())
                 .creator(entity.getCreator())
+                .desk(deskMapper.toModel(entity.getDesk()))
                 .build();
     }
 
@@ -31,6 +37,7 @@ public class CharacterAdapter implements CharacterMapper {
                 .image(model.getImage())
                 .doc(model.getDoc())
                 .creator(model.getCreator())
+                .desk(deskMapper.toEntity(model.getDesk()))
                 .build();
     }
 

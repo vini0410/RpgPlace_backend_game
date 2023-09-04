@@ -1,17 +1,19 @@
-package com.rpg.game.RpgPlaceGame.adapters.database.adap;
+package com.rpg.game.RpgPlaceGame.adapters.database.impl;
 
 import com.rpg.game.RpgPlaceGame.adapters.database.entity.DeskEntity;
 import com.rpg.game.RpgPlaceGame.adapters.database.mapper.CharacterMapper;
 import com.rpg.game.RpgPlaceGame.adapters.database.mapper.DeskMapper;
 import com.rpg.game.RpgPlaceGame.application.core.model.DeskModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class DeskAdapter implements DeskMapper {
+public class DeskMapperImpl implements DeskMapper {
 
-    CharacterMapper characterMapper;
+    @Autowired
+    private CharacterMapper characterMapper;
 
     @Override
     public DeskModel toModel(DeskEntity entity) {

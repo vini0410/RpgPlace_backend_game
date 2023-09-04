@@ -1,7 +1,11 @@
 package com.rpg.game.RpgPlaceGame.adapters.database.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -24,7 +28,9 @@ public class DeskEntity {
     @Column(name = "master", nullable = false)
     private Long master;
 
-    @Column(name = "characters")
+    @JsonManagedReference
+    @OneToMany
+    @Column(name = "characters_id")
     private List<CharacterEntity> characters;
 
     @Column(name = "code")

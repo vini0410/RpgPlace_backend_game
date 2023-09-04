@@ -1,5 +1,6 @@
 package com.rpg.game.RpgPlaceGame.adapters.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.AllArgsConstructor;
@@ -23,6 +24,8 @@ public class CharacterDto {
     private String image;
 
     private String doc;
+    @JsonBackReference
+    private DeskDto desk;
 
     private Long creator;
 }

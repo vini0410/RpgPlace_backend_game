@@ -1,4 +1,4 @@
-package com.rpg.game.RpgPlaceGame.application.core.usecase;
+package com.rpg.game.RpgPlaceGame.application.core.usecase.character;
 
 import com.rpg.game.RpgPlaceGame.application.core.exception.CoreException;
 import com.rpg.game.RpgPlaceGame.application.core.model.CharacterModel;
@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+
+import static com.rpg.game.RpgPlaceGame.application.core.usecase.utils.RpgUtils.validateCharacter;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +34,7 @@ public class CharacterUseCase {
     }
 
     public CharacterModel addCharacter(CharacterModel model) {
-        validarCampos(model);
+        validateCharacter(model);
 
         return characterPort.save(model);
     }
@@ -42,7 +44,7 @@ public class CharacterUseCase {
             throw new CoreException("Erro");
         }
 
-        validarCampos(model);
+        validateCharacter(model);
 
         var character = findCharacter(id);
         var response = Objects.equals(character.getId(), model.getId()) ? characterPort.save(model) : null;
@@ -51,11 +53,5 @@ public class CharacterUseCase {
             throw new CoreException("Erro");
         }
         return response;
-    }
-
-    private void validarCampos(CharacterModel model) {
-        if (Objects.isNull(model)) {
-            throw new CoreException("Erro");
-        }
     }
 }

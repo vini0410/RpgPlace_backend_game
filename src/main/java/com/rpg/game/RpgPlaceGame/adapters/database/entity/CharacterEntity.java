@@ -1,6 +1,5 @@
 package com.rpg.game.RpgPlaceGame.adapters.database.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,10 +30,9 @@ public class CharacterEntity {
     @Column(name = "doc")
     private String doc;
 
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "desk_id")
-    private DeskEntity desk;
+    @Column(name = "desk_id")
+    private Long desk;
 
+    @Column(name = "creator")
     private Long creator;
 }

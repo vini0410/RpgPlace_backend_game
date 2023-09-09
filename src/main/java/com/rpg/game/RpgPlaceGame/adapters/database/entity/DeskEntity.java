@@ -1,13 +1,16 @@
 package com.rpg.game.RpgPlaceGame.adapters.database.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import java.util.List;
+
+import static org.hibernate.annotations.CascadeType.ALL;
+
 
 @Entity
 @AllArgsConstructor
@@ -19,7 +22,6 @@ public class DeskEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
@@ -28,9 +30,9 @@ public class DeskEntity {
     @Column(name = "master", nullable = false)
     private Long master;
 
-    @JsonManagedReference
     @OneToMany
-    @Column(name = "characters_id")
+    @Cascade(ALL)
+    @JoinColumn(name = "id")
     private List<CharacterEntity> characters;
 
     @Column(name = "code")

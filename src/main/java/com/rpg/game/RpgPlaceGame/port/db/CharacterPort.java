@@ -10,5 +10,7 @@ public interface CharacterPort {
 
     List<CharacterModel> findAll();
 
+    List<CharacterModel> findByPlayer(Long user);
+
     CharacterModel save (CharacterModel model);
 }

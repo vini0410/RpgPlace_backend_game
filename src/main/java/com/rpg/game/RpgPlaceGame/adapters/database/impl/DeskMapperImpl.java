@@ -21,8 +21,9 @@ public class DeskMapperImpl implements DeskMapper {
                 .id(entity.getId())
                 .name(entity.getName())
                 .master(entity.getMaster())
-                .characters(entity.getCharacters().stream().map(character ->
-                        characterMapper.toModel(character)).toList())
+                .characters(entity.getCharacters().isEmpty() ? null :
+                        entity.getCharacters().stream().map(character ->
+                                characterMapper.toModel(character)).toList())
                 .code(entity.getCode())
                 .build();
     }
@@ -33,8 +34,9 @@ public class DeskMapperImpl implements DeskMapper {
                 .id(model.getId())
                 .name(model.getName())
                 .master(model.getMaster())
-                .characters(model.getCharacters().stream().map(character ->
-                        characterMapper.toEntity(character)).toList())
+                .characters(model.getCharacters().isEmpty() ? null :
+                        model.getCharacters().stream().map(character ->
+                                characterMapper.toEntity(character)).toList())
                 .code(model.getCode())
                 .build();
     }

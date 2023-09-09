@@ -10,5 +10,7 @@ public interface DeskPort {
 
     List<DeskModel> findAll();
 
+    List<DeskModel> findByIds(List<Long> ids);
+
     DeskModel save(DeskModel model);
 }

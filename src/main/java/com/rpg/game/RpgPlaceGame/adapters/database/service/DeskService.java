@@ -33,6 +33,11 @@ public class DeskService implements DeskPort {
     }
 
     @Override
+    public List<DeskModel> findByIds(List<Long> ids) {
+        return mapper.toModelList(repository.findByIds(ids));
+    }
+
+    @Override
     public DeskModel save(DeskModel model) {
         return mapper.toModel(repository.save(mapper.toEntity(model)));
     }

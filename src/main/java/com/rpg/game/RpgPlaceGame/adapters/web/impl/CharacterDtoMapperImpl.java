@@ -24,7 +24,7 @@ public class CharacterDtoMapperImpl implements CharacterDtoMapper {
                 .image(model.getImage())
                 .doc(model.getDoc())
                 .creator(model.getCreator())
-                .desk(deskDtoMapper.toDto(model.getDesk()))
+                .desk(model.getDesk())
                 .build();
     }
 
@@ -37,7 +37,7 @@ public class CharacterDtoMapperImpl implements CharacterDtoMapper {
                 .image(dto.getImage())
                 .doc(dto.getDoc())
                 .creator(dto.getCreator())
-                .desk(deskDtoMapper.toModel(dto.getDesk()))
+                .desk(dto.getDesk())
                 .build();
     }
 

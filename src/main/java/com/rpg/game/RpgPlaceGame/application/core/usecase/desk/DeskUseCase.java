@@ -1,4 +1,4 @@
-package com.rpg.game.RpgPlaceGame.application.core.usecase;
+package com.rpg.game.RpgPlaceGame.application.core.usecase.desk;
 
 import com.rpg.game.RpgPlaceGame.application.core.exception.CoreException;
 import com.rpg.game.RpgPlaceGame.application.core.model.DeskModel;
@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+
+import static com.rpg.game.RpgPlaceGame.application.core.usecase.utils.RpgUtils.validateDesk;
 
 @Service
 @RequiredArgsConstructor
@@ -32,18 +34,18 @@ public class DeskUseCase {
         return deskPort.findAll();
     }
 
-    public DeskModel addUser(DeskModel model) {
-        validarCampos(model);
+    public DeskModel addDesk(DeskModel model) {
+        validateDesk(model);
 
         return deskPort.save(model);
     }
 
-    public DeskModel updateUser(Long id, DeskModel model) {
+    public DeskModel updateDesk(Long id, DeskModel model) {
         if (Objects.isNull(id)) {
             throw new CoreException("Erro");
         }
 
-        validarCampos(model);
+        validateDesk(model);
 
         var user = findDesk(id);
         var response = Objects.equals(user.getId(), model.getId()) ? deskPort.save(model) : null;
@@ -53,9 +55,5 @@ public class DeskUseCase {
         return response;
     }
 
-    private void validarCampos(DeskModel model) {
-        if (Objects.isNull(model)) {
-            throw new CoreException("Erro");
-        }
-    }
+
 }

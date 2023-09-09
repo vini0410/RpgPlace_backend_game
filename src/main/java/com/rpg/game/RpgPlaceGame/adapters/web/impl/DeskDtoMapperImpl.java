@@ -21,8 +21,9 @@ public class DeskDtoMapperImpl implements DeskDtoMapper {
                 .id(model.getId())
                 .name(model.getName())
                 .master(model.getMaster())
-                .characters(model.getCharacters().stream().map(character ->
-                        characterMapper.toDto(character)).toList())
+                .characters(model.getCharacters().isEmpty() ? null :
+                        model.getCharacters().stream().map(character ->
+                                characterMapper.toDto(character)).toList())
                 .code(model.getCode())
                 .build();
     }
@@ -33,8 +34,9 @@ public class DeskDtoMapperImpl implements DeskDtoMapper {
                 .id(dto.getId())
                 .name(dto.getName())
                 .master(dto.getMaster())
-                .characters(dto.getCharacters().stream().map(character ->
-                        characterMapper.toModel(character)).toList())
+                .characters(dto.getCharacters().isEmpty() ? null :
+                        dto.getCharacters().stream().map(character ->
+                                characterMapper.toModel(character)).toList())
                 .code(dto.getCode())
                 .build();
     }

@@ -30,6 +30,12 @@ public class CharacterService implements CharacterPort {
     }
 
     @Override
+    public List<CharacterModel> findByPlayer(Long user) {
+        var response = repository.findByPlayer(user);
+        return mapper.toModelList(response);
+    }
+
+    @Override
     public CharacterModel save(CharacterModel model) {
         return mapper.toModel(repository.save(mapper.toEntity(model)));
     }

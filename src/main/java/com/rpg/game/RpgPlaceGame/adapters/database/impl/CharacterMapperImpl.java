@@ -24,7 +24,7 @@ public class CharacterMapperImpl implements CharacterMapper {
                 .image(entity.getImage())
                 .doc(entity.getDoc())
                 .creator(entity.getCreator())
-                .desk(deskMapper.toModel(entity.getDesk()))
+                .desk(entity.getDesk())
                 .build();
     }
 
@@ -37,7 +37,7 @@ public class CharacterMapperImpl implements CharacterMapper {
                 .image(model.getImage())
                 .doc(model.getDoc())
                 .creator(model.getCreator())
-                .desk(deskMapper.toEntity(model.getDesk()))
+                .desk(model.getDesk())
                 .build();
     }
 

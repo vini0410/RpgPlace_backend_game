@@ -2,7 +2,7 @@ package com.rpg.game.RpgPlaceGame.adapters.web.controller;
 
 import com.rpg.game.RpgPlaceGame.adapters.web.dto.CharacterDto;
 import com.rpg.game.RpgPlaceGame.adapters.web.mapper.CharacterDtoMapper;
-import com.rpg.game.RpgPlaceGame.application.core.usecase.CharacterUseCase;
+import com.rpg.game.RpgPlaceGame.application.core.usecase.character.CharacterUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

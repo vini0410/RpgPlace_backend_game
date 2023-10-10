@@ -18,6 +18,11 @@ public class DeskService implements DeskPort {
     private DeskMapper mapper;
 
     @Override
+    public DeskModel save(DeskModel model) {
+        return mapper.toModel(repository.save(mapper.toEntity(model)));
+    }
+
+    @Override
     public DeskModel findById(Long id) {
         var response = repository.findById(id);
 
@@ -38,7 +43,9 @@ public class DeskService implements DeskPort {
     }
 
     @Override
-    public DeskModel save(DeskModel model) {
-        return mapper.toModel(repository.save(mapper.toEntity(model)));
+    public List<DeskModel> findByMaster(Long id) {
+        return mapper.toModelList(repository.findByMaster(id));
     }
+
+
 }

@@ -19,20 +19,6 @@ public class CharacterUseCase {
     @Autowired
     private CharacterPort characterPort;
 
-    public CharacterModel findCharacter(Long id) {
-        var response = characterPort.findById(id);
-
-        if (Objects.isNull(response)) {
-            throw new CoreException("Erro");
-        }
-
-        return response;
-    }
-
-    public List<CharacterModel> findAll() {
-        return characterPort.findAll();
-    }
-
     public CharacterModel addCharacter(CharacterModel model) {
         validateCharacter(model);
 
@@ -54,4 +40,19 @@ public class CharacterUseCase {
         }
         return response;
     }
+
+    public CharacterModel findCharacter(Long id) {
+        var response = characterPort.findById(id);
+
+        if (Objects.isNull(response)) {
+            throw new CoreException("Erro");
+        }
+
+        return response;
+    }
+
+    public List<CharacterModel> findAll() {
+        return characterPort.findAll();
+    }
+
 }

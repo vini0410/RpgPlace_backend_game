@@ -16,4 +16,10 @@ public interface DeskRepository extends JpaRepository<DeskEntity, Long> {
             "WHERE d.id IN :ids")
     List<DeskEntity> findByIds(
             @Param("ids") List<Long> ids);
+
+    @Query(value = "SELECT d " +
+            "FROM DeskEntity d " +
+            "WHERE d.master = :id")
+    List<DeskEntity> findByMaster(
+            @Param("id") Long id);
 }

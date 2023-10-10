@@ -19,21 +19,6 @@ public class DeskUseCase {
     @Autowired
     private DeskPort deskPort;
 
-    public DeskModel findDesk(Long id) {
-
-        var response = deskPort.findById(id);
-
-        if (Objects.isNull(response)) {
-            throw new CoreException("Erro");
-        }
-
-        return response;
-    }
-
-    public List<DeskModel> findAll() {
-        return deskPort.findAll();
-    }
-
     public DeskModel addDesk(DeskModel model) {
         validateDesk(model);
 
@@ -53,6 +38,36 @@ public class DeskUseCase {
             throw new CoreException("Erro");
         }
         return response;
+    }
+
+    public DeskModel updateDesk(DeskModel model) {
+        validateDesk(model);
+
+        var response = deskPort.save(model);
+        if (Objects.isNull(response)) {
+            throw new CoreException("Erro");
+        }
+        return response;
+    }
+
+    public DeskModel findDesk(Long id) {
+
+        var response = deskPort.findById(id);
+
+        if (Objects.isNull(response)) {
+            throw new CoreException("Erro");
+        }
+
+        return response;
+    }
+
+    public List<DeskModel> findAll() {
+        return deskPort.findAll();
+    }
+
+    public DeskModel createEmptyDesk(DeskModel model) {
+        validateDesk(model);
+        return deskPort.save(model);
     }
 
 

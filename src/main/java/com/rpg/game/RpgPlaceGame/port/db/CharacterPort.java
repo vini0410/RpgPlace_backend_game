@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface CharacterPort {
 
+    CharacterModel save(CharacterModel model);
+
     CharacterModel findById(Long id);
 
     List<CharacterModel> findAll();
 
     List<CharacterModel> findByPlayer(Long user);
-
-    CharacterModel save (CharacterModel model);
 }

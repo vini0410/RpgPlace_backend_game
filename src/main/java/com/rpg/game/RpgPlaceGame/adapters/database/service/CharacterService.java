@@ -18,6 +18,11 @@ public class CharacterService implements CharacterPort {
     private CharacterMapper mapper;
 
     @Override
+    public CharacterModel save(CharacterModel model) {
+        return mapper.toModel(repository.save(mapper.toEntity(model)));
+    }
+
+    @Override
     public CharacterModel findById(Long id) {
         var response = repository.findById(id);
         return response.map(characterEntity -> mapper.toModel(characterEntity)).orElse(null);
@@ -35,8 +40,5 @@ public class CharacterService implements CharacterPort {
         return mapper.toModelList(response);
     }
 
-    @Override
-    public CharacterModel save(CharacterModel model) {
-        return mapper.toModel(repository.save(mapper.toEntity(model)));
-    }
+
 }

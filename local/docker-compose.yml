@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    ports:
+      - "16543:80"
+    depends_on:
+      - database-pessoas
+    networks:
+      - postgres-network
+
+  database-game:
+    image: "postgres"
+    restart: always
+    environment:
+      POSTGRES_DB: game
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      PGDATA: /pg/data/game
+    volumes:
+      - db-game:/pg/data/game
+    ports:
+      - "8070:5432"
+    networks:
+      - postgres-network
+
+  database-pessoas:
+    image: "postgres"
+    restart: always
+    environment:
+      POSTGRES_DB: pessoas
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      PGDATA: /pg/data/pessoas
+    volumes:
+      - db-pessoas:/pg/data/pessoas
+    ports:
+      - "8071:5432"
+    networks:
+      - postgres-network
+
+networks:
+  postgres-network:
+    driver: bridge
+
+volumes:
+  pgadmin-data:
+  db-game:
+  db-pessoas:
